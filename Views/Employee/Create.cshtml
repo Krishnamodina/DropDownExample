@@ -1,0 +1,25 @@
+﻿@model DropDownExample.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    <label for="SelectedDepartmentId"> Department</label>
+                    @Html.DropDownListFor(
+                   model=>model.SelectedDepartmentId,
+                   new SelectList(Model.departments,"DeptId","Name"),
+                   "---Select Department---",
+                   new {@class="form-control"}
+
+                   )
+                    @Html.ValidationMessageFor(model=>model.SelectedDepartmentId,"",new { @class="text-danger"})
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            }
+
+
+
